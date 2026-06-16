@@ -1,0 +1,285 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Snares Linux</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-left">
+            <img src="../images/logo.png" class="nav-logo" alt="Snares Linux Logo">
+        </div>
+
+        <div class="navbar-center">
+            <a href="../index.html">Home</a>
+            <a href="../documentation.html">Documentation</a>
+            <a href="../download.html">Download</a>
+        </div>
+
+        <div class="navbar-right"></div>
+    </div>
+
+    <div class="content">
+
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="doc-card">
+            <h2>What is Snares Linux?</h2>
+
+            <p>
+                Snares Linux is a secure, general-purpose Linux distribution built on top
+                of Void Linux. While it inherits Void's package archive and uses the XBPS
+                package manager, Snares Linux provides its own desktop experience,
+                installer, security defaults, and system configuration.
+            </p>
+
+            <p>
+                Snares Linux aims to combine the simplicity and performance of Void Linux
+                with a modern desktop experience and strong security features.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>How is Snares Linux different from Void Linux?</h2>
+
+            <p>
+                Snares Linux is built on Void Linux but provides a different user
+                experience and set of defaults.
+            </p>
+
+            <ul>
+                <li>Guided graphical installer</li>
+                <li>LUKS disk encryption enabled by default</li>
+                <li>dinit as the default init system</li>
+                <li>AppArmor enabled and enforced by default</li>
+                <li>GNOME desktop environment</li>
+                <li>First-boot configuration wizard</li>
+                <li>Curated desktop experience</li>
+                <li>Named releases with rolling package updates</li>
+            </ul>
+        </div>
+
+        <div class="doc-card">
+            <h2>Is Snares Linux based on Void Linux?</h2>
+
+            <p>
+                Yes. Snares Linux uses Void Linux as its foundation and inherits its
+                package repositories and XBPS package manager.
+            </p>
+
+            <p>
+                Most software available for Void Linux can also be installed on
+                Snares Linux.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Which init system does Snares Linux use?</h2>
+
+            <p>
+                Snares Linux uses <strong>dinit</strong> as its default init system.
+            </p>
+
+            <p>
+                dinit is lightweight, fast, and designed around simple and reliable
+                service management.
+            </p>
+
+            <p>
+                Support for OpenRC may be added in the future, but dinit is currently
+                the primary supported init system.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Does Snares Linux use systemd?</h2>
+
+            <p>
+                No.
+            </p>
+
+            <p>
+                Snares Linux does not use systemd and has no plans to adopt it.
+                Instead, it uses dinit as its default init system.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Why does Snares Linux use musl?</h2>
+
+            <p>
+                Snares Linux is based on the musl variant of Void Linux.
+            </p>
+
+            <p>
+                musl is known for its simplicity, small size, security-focused design,
+                and standards compliance.
+            </p>
+
+            <p>
+                While most Linux software works correctly on musl, some proprietary
+                applications may only support glibc-based systems.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Which desktop environment does Snares Linux use?</h2>
+
+            <p>
+                Snares Linux uses GNOME as its official desktop environment.
+            </p>
+
+            <p>
+                The desktop experience is designed to be clean, modern, and easy to use
+                while remaining lightweight enough for everyday computing.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Does Snares Linux support Wayland?</h2>
+
+            <p>
+                Yes.
+            </p>
+
+            <p>
+                Snares Linux uses GNOME on Wayland by default. X11 is not a primary
+                target and future development focuses on Wayland support.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>What package manager does Snares Linux use?</h2>
+
+            <p>
+                Snares Linux uses XBPS (X Binary Package System), the same package
+                manager used by Void Linux.
+            </p>
+
+            <p>
+                Examples:
+            </p>
+
+            <pre><code>
+xbps-install firefox
+xbps-install -Su
+            </code></pre>
+        </div>
+
+        <div class="doc-card">
+            <h2>Is disk encryption supported?</h2>
+
+            <p>
+                Yes.
+            </p>
+
+            <p>
+                Snares Linux uses LUKS for full-disk encryption and enables encryption
+                by default during installation.
+            </p>
+
+            <p>
+                Users may disable encryption during installation if desired.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>What security features are included?</h2>
+
+            <p>
+                Security is one of the primary goals of Snares Linux.
+            </p>
+
+            <ul>
+                <li>LUKS disk encryption</li>
+                <li>AppArmor enabled by default</li>
+                <li>Hardened kernel configuration</li>
+                <li>Minimal default software installation</li>
+                <li>Regular security updates through XBPS</li>
+            </ul>
+        </div>
+
+        <div class="doc-card">
+            <h2>Is Snares Linux a rolling release?</h2>
+
+            <p>
+                Snares Linux uses a hybrid release model.
+            </p>
+
+            <p>
+                Packages are updated continuously through XBPS, but Snares Linux also
+                publishes named releases that provide new installation media,
+                updated defaults, and major project milestones.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Is Snares Linux ready for daily use?</h2>
+
+            <p>
+                Not yet.
+            </p>
+
+            <p>
+                Snares Linux is currently in active development and should be considered
+                experimental until the first public release is announced.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Who is Snares Linux for?</h2>
+
+            <p>
+                Snares Linux is designed for users who want a modern desktop Linux
+                distribution with strong security defaults, a straightforward installation
+                process, and the flexibility of the Void Linux ecosystem.
+            </p>
+        </div>
+
+        <div class="doc-card">
+            <h2>Can I contribute?</h2>
+
+            <p>
+                Yes.
+            </p>
+
+            <p>
+                Contributions are welcome in many forms:
+            </p>
+
+            <ul>
+                <li>Testing development builds</li>
+                <li>Bug reports</li>
+                <li>Documentation improvements</li>
+                <li>Packaging software</li>
+                <li>Code contributions</li>
+                <li>Community support</li>
+            </ul>
+        </div>
+
+        <div class="doc-card">
+            <h2>When will the first release be available?</h2>
+
+            <p>
+                There is currently no announced release date.
+            </p>
+
+            <p>
+                Development is focused on completing the installer, ISO generation
+                system, desktop integration, and first-boot experience before the
+                first public release.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
