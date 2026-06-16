@@ -150,3 +150,68 @@ h1 {
 .feature-card h3 {
     margin-top: 0;
 }
+
+input, textarea, select {
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent);
+}
+
+.doc-layout {
+    display: flex;
+    align-items: flex-start;
+}
+
+.doc-sidebar {
+    position: sticky;
+    top: 80px;
+    width: 220px;
+    padding: 20px;
+    height: fit-content;
+}
+
+.folder {
+    margin-bottom: 20px;
+}
+
+.folder p {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--accent);
+}
+
+.folder a {
+    display: block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.folder a:hover {
+    color: var(--accent);
+}
+
+.doc-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.doc-section {
+    margin-left: 50px;
+}
+
+.doc-section-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-left: 4px solid var(--accent);
+    color: var(--text);
+}
