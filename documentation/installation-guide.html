@@ -37,20 +37,14 @@
             </div>
 
             <div class="folder">
-                <p>GUI Install</p>
-                <a href="#gui-1">Download ISO</a>
-                <a href="#gui-2">Create Installation Media</a>
-                <a href="#gui-3">Boot the USB</a>
-                <a href="#gui-4">Run the Installer</a>
-            </div>
-
-            <div class="folder">
-                <p>Manual Install</p>
+                <p>Installation</p>
+                <!--
                 <a href="#manual-1">Partitioning</a>
                 <a href="#manual-2">Mounting</a>
                 <a href="#manual-3">Install Base System</a>
                 <a href="#manual-4">Kernel & Bootloader</a>
                 <a href="#manual-5">Final Configuration</a>
+                -->
             </div>
 
         </aside>
@@ -69,8 +63,6 @@
                     <ul>
                         <li>Installing an operating system may erase data if the wrong drive or partition is selected.</li>
                         <li>Always back up important files before installing Snares Linux.</li>
-                        <li>The GUI installer is recommended for most users.</li>
-                        <li>The manual installation method assumes basic familiarity with Linux command-line tools.</li>
                     </ul>
                 </div>
 
@@ -88,258 +80,9 @@
 
             <section class="doc-section">
 
-                <h2 class="doc-section-title">GUI Installation</h2>
+                <h2 class="doc-section-title">Installation</h2>
 
-                <div class="doc-card" id="gui-1">
-                    <h2>1. Download the ISO</h2>
-
-                    <p>
-                        Download the latest Snares Linux ISO image from the official download page.
-                    </p>
-                </div>
-
-                <div class="doc-card" id="gui-2">
-                    <h2>2. Create Installation Media</h2>
-
-                    <p>
-                        Write the ISO image to a USB flash drive using one of the following tools:
-                    </p>
-
-                    <ul>
-                        <li>Rufus (Windows)</li>
-                        <li>Balena Etcher (Windows, Linux, macOS)</li>
-                        <li>Ventoy</li>
-                    </ul>
-
-                    <p>
-                        After the flashing process completes, safely eject the USB drive.
-                    </p>
-                </div>
-
-                <div class="doc-card" id="gui-3">
-                    <h2>3. Boot the USB</h2>
-
-                    <p>
-                        Insert the USB drive into the target computer and reboot.
-                    </p>
-
-                    <p>
-                        Open your system's boot menu (commonly F12, F11, ESC, or DEL depending on your hardware)
-                        and select the USB device.
-                    </p>
-
-                    <p>
-                        When the Snares Linux boot menu appears, select the first option to start the live environment.
-                    </p>
-                </div>
-
-                <div class="doc-card" id="gui-4">
-                    <h2>4. Run the Installer</h2>
-
-                    <p>
-                        Once the desktop environment has loaded, open the Install Wizard.
-                    </p>
-
-                    <p>
-                        The installer is usually available from the dock. If it is not present, open the application
-                        menu and search for "Install Wizard".
-                    </p>
-
-                    <p>
-                        Follow the on-screen instructions to configure storage, create users, and install the system.
-                    </p>
-                </div>
-
-            </section>
-
-            <section class="doc-section">
-
-                <h2 class="doc-section-title">Manual Installation</h2>
-
-                <div class="doc-card" id="manual-1">
-                    <h2>1. Partitioning and Formatting</h2>
-
-                    <p>
-                        First, identify the target drive:
-                    </p>
-
-                    <pre><code>lsblk</code></pre>
-
-                    <p>
-                        In this guide we will assume the target drive is:
-                    </p>
-
-                    <pre><code>/dev/sda</code></pre>
-
-                    <p>
-                        Use your preferred partitioning tool:
-                    </p>
-
-                    <ul>
-                        <li><code>fdisk</code></li>
-                        <li><code>cfdisk</code></li>
-                    </ul>
-
-                    <p>
-                        Example:
-                    </p>
-
-                    <pre><code>cfdisk /dev/sda</code></pre>
-
-                    <p>
-                        Create at minimum:
-                    </p>
-
-                    <ul>
-                        <li>EFI System Partition (512 MB or larger)</li>
-                        <li>Root partition (10 GB or larger recommended)</li>
-                        <li>Optional swap partition</li>
-                    </ul>
-
-                    <p>
-                        Format the partitions:
-                    </p>
-
-                    <pre><code>
-mkfs.vfat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
-mkswap /dev/sda3
-                    </code></pre>
-
-                    <p>
-                        Skip the swap command if you did not create a swap partition.
-                    </p>
-                </div>
-
-                <div class="doc-card" id="manual-2">
-                    <h2>2. Mounting Partitions</h2>
-
-                    <p>
-                        Mount the root partition:
-                    </p>
-
-                    <pre><code>mount /dev/sda2 /mnt</code></pre>
-
-                    <p>
-                        Create the boot directory:
-                    </p>
-
-                    <pre><code>mkdir -p /mnt/boot</code></pre>
-
-                    <p>
-                        Mount the EFI partition:
-                    </p>
-
-                    <pre><code>mount /dev/sda1 /mnt/boot</code></pre>
-
-                    <p>
-                        If you created a swap partition, enable it:
-                    </p>
-
-                    <pre><code>swapon /dev/sda3</code></pre>
-                </div>
-
-                <div class="doc-card" id="manual-3">
-                    <h2>3. Installing the Base System</h2>
-
-                    <p>
-                        Snares Linux uses the XBPS package manager.
-                    </p>
-
-                    <p>
-                        Install the base system to the mounted filesystem:
-                    </p>
-
-                    <pre><code>xbps-install -S -r /mnt snares-base</code></pre>
-
-                    <p>
-                        Once installation completes, continue with the kernel and bootloader.
-                    </p>
-                </div>
-
-                <div class="doc-card" id="manual-4">
-                    <h2>4. Installing the Kernel and Bootloader</h2>
-
-                    <p>
-                        Enter the newly installed system:
-                    </p>
-
-                    <pre><code>snares-chroot /mnt</code></pre>
-
-                    <p>
-                        Install the Linux kernel:
-                    </p>
-
-                    <pre><code>xbps-install -S linux</code></pre>
-
-                    <p>
-                        Install GRUB:
-                    </p>
-
-                    <pre><code>xbps-install -S grub</code></pre>
-
-                    <p>
-                        Install the bootloader:
-                    </p>
-
-                    <pre><code>grub-install /dev/sda</code></pre>
-
-                    <p>
-                        Generate a GRUB configuration:
-                    </p>
-
-                    <pre><code>grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
-
-                    <p>
-                        Snares Linux uses GRUB by default, but advanced users may choose an alternative bootloader.
-                    </p>
-                </div>
-
-                <div class="doc-card" id="manual-5">
-                    <h2>5. Final Configuration</h2>
-
-                    <p>
-                        Before rebooting, perform the following recommended steps:
-                    </p>
-
-                    <h3>Set the Root Password</h3>
-
-                    <pre><code>passwd</code></pre>
-
-                    <h3>Create a User</h3>
-
-                    <pre><code>useradd -m username</code></pre>
-
-                    <h3>Set the User Password</h3>
-
-                    <pre><code>passwd username</code></pre>
-
-                    <h3>Set the Hostname</h3>
-
-                    <pre><code>echo "snares" > /etc/hostname</code></pre>
-
-                    <p>
-                        Exit the chroot environment:
-                    </p>
-
-                    <pre><code>exit</code></pre>
-
-                    <p>
-                        Unmount all partitions:
-                    </p>
-
-                    <pre><code>umount -R /mnt</code></pre>
-
-                    <p>
-                        Reboot the system:
-                    </p>
-
-                    <pre><code>reboot</code></pre>
-
-                    <p>
-                        Remove the installation USB when prompted. Your Snares Linux installation should now boot normally.
-                    </p>
-                </div>
+                <p>Currently Snares Linux is not installable and there fore there is no installation guide yet.</p>
 
             </section>
 
