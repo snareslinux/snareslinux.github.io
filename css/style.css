@@ -67,6 +67,60 @@ body {
     justify-content: flex-end;
 }
 
+.footer {
+    background-color: var(--navbar);
+    padding: 40px 30px 20px;
+    color: var(--text);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.footer-links > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links h3 {
+    margin-top: 0;
+    margin-bottom: 5;
+}
+
+.footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.footer a:hover {
+    color: var(--text-accent);
+}
+
+.footer-bottom {
+    max-width: 1000px;
+    margin: 30px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 14;
+}
+
+@media (max-width: 600px) {
+    .footer-links {
+        justify-content: flex;
+        gap: 35px;
+    }
+}
+
 .content {
     margin-top: 80px;
     padding: 30px;
